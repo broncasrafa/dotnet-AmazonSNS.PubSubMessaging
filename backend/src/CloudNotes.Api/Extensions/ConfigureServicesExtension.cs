@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using CloudNotes.Api.Middlewares;
+using CloudNotes.Domain.Settings;
 
 namespace CloudNotes.Api.Extensions;
 
@@ -9,6 +10,9 @@ public static class ConfigureServicesExtension
 {
     public static void ConfigureServices(this IServiceCollection services, ConfigurationManager configuration)
     {
+        services.Configure<SNSSettings>(configuration.GetSection("EventPublishing"));
+        services.Configure<S3Settings>(configuration.GetSection("Storage"));
+
         services.AddHttpContextAccessor();
 
         services.Configure<JsonOptions>(options => { options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; });
