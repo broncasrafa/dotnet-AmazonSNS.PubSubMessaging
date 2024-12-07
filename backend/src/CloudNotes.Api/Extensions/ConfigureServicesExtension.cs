@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using CloudNotes.Api.Middlewares;
 using CloudNotes.Domain.Settings;
+using CloudNotes.Infra.Data.DependencyInjection;
+using CloudNotes.Application.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace CloudNotes.Api.Extensions;
 
@@ -39,11 +42,22 @@ public static class ConfigureServicesExtension
                         Url = new Uri("https://github.com/broncasrafa")
                     }
                 };
+
+                //if (document.Tags == null)
+                //    document.Tags = new List<OpenApiTag>();
+
+                //document.Tags.Add(new OpenApiTag { Name = "Notes", Description = "Esta tag agrupa todos os endpoints relacionados ao gerenciamento de notas. Aqui você pode adicionar, listar, atualizar e remover notas." });
+
                 return Task.CompletedTask;
             });
+
         });
 
         services.AddHealthChecks()
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["api"]);
+
+        services.AddInfrastructureData(configuration);
+
+        services.AddApplication();
     }
 }
