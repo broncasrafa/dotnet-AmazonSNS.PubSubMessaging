@@ -4,8 +4,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using CloudNotes.Api.Middlewares;
 using CloudNotes.Domain.Settings;
 using CloudNotes.Infra.Data.DependencyInjection;
+using CloudNotes.Infra.Notification.DependencyInjection;
 using CloudNotes.Application.DependencyInjection;
-using Microsoft.OpenApi.Models;
 
 namespace CloudNotes.Api.Extensions;
 
@@ -43,11 +43,6 @@ public static class ConfigureServicesExtension
                     }
                 };
 
-                //if (document.Tags == null)
-                //    document.Tags = new List<OpenApiTag>();
-
-                //document.Tags.Add(new OpenApiTag { Name = "Notes", Description = "Esta tag agrupa todos os endpoints relacionados ao gerenciamento de notas. Aqui você pode adicionar, listar, atualizar e remover notas." });
-
                 return Task.CompletedTask;
             });
 
@@ -57,6 +52,8 @@ public static class ConfigureServicesExtension
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["api"]);
 
         services.AddInfrastructureData(configuration);
+
+        services.AddInfrastructureNotifications();
 
         services.AddApplication();
     }

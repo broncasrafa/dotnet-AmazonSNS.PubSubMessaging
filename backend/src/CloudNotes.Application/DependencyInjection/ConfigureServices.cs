@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using CloudNotes.Application.Mappers;
 using CloudNotes.Application.Services.Implementations;
 using CloudNotes.Application.Services.Interfaces;
-using CloudNotes.Application.Mappers;
+using CloudNotes.Application.Validations.Note;
 using FluentValidation;
 
 namespace CloudNotes.Application.DependencyInjection;
@@ -24,5 +24,5 @@ public static class ConfigureServices
     }
 
     private static void AddAutomapper(IServiceCollection services) => services.AddAutoMapper(typeof(MappingProfile));
-    private static void AddFluentValidation(IServiceCollection services) => services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+    private static void AddFluentValidation(IServiceCollection services) => services.AddValidatorsFromAssemblyContaining<NoteCreateValidation>();
 }

@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using CloudNotes.Domain.Interfaces;
 using CloudNotes.Domain.Models;
 using CloudNotes.Domain.Settings;
+using CloudNotes.Domain.Extensions;
+using CloudNotes.Domain.Interfaces.Events;
 using Amazon;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
 using Amazon.S3.Model;
-using CloudNotes.Domain.Extensions;
 
 
 namespace CloudNotes.Infra.Notification.SNS;
@@ -32,9 +32,21 @@ internal class SNSEventPublisher : IEventPublisher
     {
         try
         {
+            SNSMessage message = new SNSMessage(eventData.SerializeObject());
+            message.EmailContent = $"{eventData.EventType.ToString()} - Note {eventData.NoteId}";
+
+            SNSMessageAttributeCollection messageAttributes = new SNSMessageAttributeCollection();
+            messageAttributes.Add("Publisher", "CloudNotes Web");
+
             PublishRequest publishRequest = new();
             publishRequest.TopicArn = _settings.TopicArn;
-            publishRequest.Message = eventData.SerializeObject();
+            publishRequest.Message = message.ToString();
+            publishRequest.MessageStructure = "json";
+            publishRequest.Subject = eventData.GetSubject();
+            publishRequest.MessageAttributes = messageAttributes;
+            
+
+            _logger.LogInformation("Publish an event to SNS");
 
             PublishResponse publishResponse = await _snsClient.PublishAsync(publishRequest);
         }
