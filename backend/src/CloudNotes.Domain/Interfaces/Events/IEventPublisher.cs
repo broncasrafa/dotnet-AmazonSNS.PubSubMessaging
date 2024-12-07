@@ -1,6 +1,6 @@
 ﻿using CloudNotes.Domain.Models;
 
-namespace CloudNotes.Domain.Interfaces;
+namespace CloudNotes.Domain.Interfaces.Events;
 
 public interface IEventPublisher
 {

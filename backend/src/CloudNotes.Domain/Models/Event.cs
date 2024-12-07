@@ -8,4 +8,6 @@ public class Event
     public Guid NoteId { get; set; }
     public DateTime TimeStamp { get; set; }
     public string Username { get; set; }
+
+    public string GetSubject() => $"CloudNotes - {EventType.ToString()} - Note {NoteId}";
 }
