@@ -1,13 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<NuGetAudit>true</NuGetAudit>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CloudNotes.Domain\CloudNotes.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<NuGetAuditSuppress Include="https://github.com/advisories/GHSA-7jgj-8wvc-jh57" />
+		<NuGetAuditSuppress Include="https://github.com/advisories/GHSA-vh55-786g-wjwj" />
+		<NuGetAuditSuppress Include="https://github.com/advisories/GHSA-ghhp-997w-qr28" />
+		<NuGetAuditSuppress Include="https://github.com/advisories/GHSA-cmhx-cq75-c4mj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CloudNotes.Domain\CloudNotes.Domain.csproj" />
+	</ItemGroup>
 
 </Project>
+
