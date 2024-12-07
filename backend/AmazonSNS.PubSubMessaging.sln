@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Application", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Infra.Data", "src\CloudNotes.Infra.Data\CloudNotes.Infra.Data.csproj", "{14BB197A-17CC-4EBF-A051-3F4216F52595}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Infra.Notification.LambdaEventProcessor", "src\CloudNotes.Infra.Notification.LambdaEventProcessor\CloudNotes.Infra.Notification.LambdaEventProcessor.csproj", "{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{14BB197A-17CC-4EBF-A051-3F4216F52595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14BB197A-17CC-4EBF-A051-3F4216F52595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14BB197A-17CC-4EBF-A051-3F4216F52595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,6 @@ Global
 		{09D4347B-E0A6-498A-A042-C0BFD25943BE} = {06EFE2B8-07D9-4BAE-B449-FE184D347E9A}
 		{F14E8F96-6174-47AE-A3B1-B76B4F994CB8} = {645A6DBC-55BF-48FA-8D27-8F3E83FCEF73}
 		{14BB197A-17CC-4EBF-A051-3F4216F52595} = {06EFE2B8-07D9-4BAE-B449-FE184D347E9A}
+		{FD69BDBA-1739-488F-A5F6-FD5EE2ED8B93} = {06EFE2B8-07D9-4BAE-B449-FE184D347E9A}
 	EndGlobalSection
 EndGlobal

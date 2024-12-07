@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CloudNotes.Application.Validations.Note;
 
-internal class NoteCreateValidation : AbstractValidator<NoteCreateRequest>
+public class NoteCreateValidation : AbstractValidator<NoteCreateRequest>
 {
     public NoteCreateValidation()
     {
